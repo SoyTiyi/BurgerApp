@@ -159,7 +159,6 @@ export const PlusButton = styled.button`
     width: 2.5em;
     border-radius: 999px;
     position: relative;
-    display:inline-block;  
 
     &:after,
     &:before {
@@ -191,7 +190,8 @@ export const MinusButton = styled.div`
     width: 2.5em;
     border-radius: 999px;
     position: relative;
-    display:inline-block;  
+    display: inline-block;
+
 
     &:after,
     &:before {
@@ -230,7 +230,7 @@ export const RowButtons = styled.div`
 `;
 
 export const GridButtons = styled.div`
-    width: auto;
-    height: auto;   
+    width: 80%;
+    height: 40%;   
     display: inline-block;
 `;
