@@ -215,8 +215,15 @@ export const MinusButton = styled.div`
 `;
 
 export const RowControl = styled.div`
-    padding: auto 10px;
+    padding: 10px 10px;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    background-color: #e9c46a;
+
+    @media (max-width:650px) {
+        justify-content: center;
+    }
 `;
 
 export const Label = styled.p`
@@ -227,10 +234,21 @@ export const Label = styled.p`
 export const RowButtons = styled.div`
     width: auto;
     height: auto;
+    text-align: center;
 `;
 
-export const GridButtons = styled.div`
-    width: 80%;
-    height: 40%;   
-    display: inline-block;
+export const GridButtons = styled.div`  
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    border: 1px solid #e76f51;
+    background-color: #e76f51;
+    border-radius: 10px;
+    margin: 10px;
+
+    @media (max-width:650px) {
+        flex-direction: column;
+        width: auto;
+    }
 `;

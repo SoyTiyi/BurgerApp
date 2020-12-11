@@ -88,7 +88,10 @@ const BurguerBuilder = props => {
     return (
         <Aux>
             <Burger ingredients={burgerState.ingredients} />
-            <BuildControler addSalad={addSalad} deleteSalad={deleteSalad} addBacon={addBacon} deleteBacon={deleteBacon} addCheese={addCheese} deleteCheese={deleteCheese} addMeat={addMeat} deleteMeat={deleteMeat}/>
+            <BuildControler addSalad={addSalad} deleteSalad={deleteSalad} 
+                            addBacon={addBacon} deleteBacon={deleteBacon} 
+                            addCheese={addCheese} deleteCheese={deleteCheese} 
+                            addMeat={addMeat} deleteMeat={deleteMeat}/>
         </Aux>
     );
 }
