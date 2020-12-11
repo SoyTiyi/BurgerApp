@@ -182,7 +182,7 @@ export const PlusButton = styled.button`
     }
 `;
 
-export const MinusButton = styled.div`
+export const MinusButton = styled.button`
     border: 2px solid #e71d36;
     background-color: #fff;
     font-size: 16px;
@@ -197,7 +197,7 @@ export const MinusButton = styled.div`
     &:before {
         content: "";
         display: block;
-        background-color: #e71d36;
+        background-color: ${props => props.alt ? '#e71d36' : '#a5a58d'};
         position: absolute;
         top: 50%;
         left: 50%;
@@ -212,6 +212,12 @@ export const MinusButton = styled.div`
         height: 0.2em;
         width: 1em;
     }
+
+    &:disabled {
+        background-color: #c4bbaf;
+        border-color: #a5a58d;
+        color: #a5a58d;
+    }
 `;
 
 export const RowControl = styled.div`
@@ -220,6 +226,9 @@ export const RowControl = styled.div`
     display: flex;
     flex-direction: row;
     background-color: #e9c46a;
+    margin: 5px;
+    border: 1px solid #e9c46a;
+    border-radius: 10px;
 
     @media (max-width:650px) {
         justify-content: center;
@@ -250,5 +259,64 @@ export const GridButtons = styled.div`
     @media (max-width:650px) {
         flex-direction: column;
         width: auto;
+    }
+`;
+
+export const Price = styled.h2`
+    font-weight: bold;
+    color: #264653;
+`;
+
+export const TagPrice = styled.div`
+    width: auto;
+    border: 3px #f1faee solid;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 0 20px;
+`;
+
+export const ContainerTag = styled.div`
+    margin: 0 auto;
+    justify-content: center;
+    item-align: center;
+    display: flex;
+`;
+
+export const OrderButton = styled.button`
+    padding: 15px 20px;
+    border: 3px solid #e63946;
+    border-radius: 10px;
+    background-color: #e63946;
+    font-size: 16px;
+    color: #f1faee;
+
+    &:hover , &:active {
+        background-color: #8ac926;
+        border-color: #8ac926;
+    }
+
+    &:disabled {
+        background-color: #c4bbaf;
+        border-color: #c4bbaf;
+        color: #a5978b;
+    }
+`;
+
+export const Modal = styled.div`
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+
+    @media (min-width: 600px) {
+        width: 500px;
+        left: calc(50% - 250px);
     }
 `;

@@ -1,97 +1,73 @@
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import Aux from '../hoc/Aux';
-import Burger from '../components/Burguer/Burger';
+import Burger from '../components/Burger/Burger';
 import BuildControler from '../components/BuildControler/BuildControler';
+
+const BASE_PRICE = {
+    Salad: 0.5,
+    Bacon: 1,
+    Cheese: 0.7,
+    Meat: 2
+};
 
 const BurguerBuilder = props => {
     const [burgerState, setBurgerState] = useState({
         ingredients: {
-            salad: 0,
-            bacon: 0,
-            cheese: 0,
-            meat: 0
-        }
+            Salad: 0,
+            Bacon: 0,
+            Cheese: 0,
+            Meat: 0
+        },
+        price: 4
     });
 
-    const addSalad = () => {
-        const newIngredients = {...burgerState.ingredients};
-        newIngredients.salad++;
-        setBurgerState({
-            ingredients: newIngredients
-        });
-    };
+    const [orderButtonState, setOrderButtonState] = useState(false);
 
-    const addBacon = () => {
-        const newIngredients = {...burgerState.ingredients};
-        newIngredients.bacon++;
-        setBurgerState({
-            ingredients: newIngredients
-        });
-    };
-
-    const addCheese = () => {
-        const newIngredients = {...burgerState.ingredients};
-        newIngredients.cheese++;
-        setBurgerState({
-            ingredients: newIngredients
-        });
-    };
-
-    const addMeat = () => {
-        const newIngredients = {...burgerState.ingredients};
-        newIngredients.meat++;
-        setBurgerState({
-            ingredients: newIngredients
-        });
-    };
-
-    const deleteSalad = () => {
-        const newIngredients = {...burgerState.ingredients};
-        if(newIngredients.salad>0){
-            newIngredients.salad--;
-            setBurgerState({
-                ingredients: newIngredients
-            });
-        }
+    const updateActiveState = ingredients => {
+        const numIngredients = Object.keys(ingredients)
+            .map(igKey => {
+                return ingredients[igKey];
+            })
+            .reduce((sum, el) => {
+                return sum + el;
+            }, 0);
+        setOrderButtonState(numIngredients > 0);
     }
 
-    const deleteBacon = () => {
-        const newIngredients = {...burgerState.ingredients};
-        if(newIngredients.bacon>0){
-            newIngredients.bacon--;
-            setBurgerState({
-                ingredients: newIngredients
-            });
-        }
+    const addIngredient = type => {
+        const oldCount = burgerState.ingredients[type];
+        const newCount = oldCount + 1;
+        const newIngredients = { ...burgerState.ingredients }
+        newIngredients[type] = newCount;
+        const addPrice = BASE_PRICE[type];
+        const newPrice = Math.round((burgerState.price + addPrice) * 100) / 100;
+        setBurgerState({
+            ingredients: newIngredients,
+            price: newPrice
+        });
+        updateActiveState(newIngredients);
     }
 
-    const deleteCheese = () => {
-        const newIngredients = {...burgerState.ingredients};
-        if(newIngredients.cheese>0){
-            newIngredients.cheese--;
+    const deleteIngredient = type => {
+        const oldCount = burgerState.ingredients[type];
+        if (oldCount > 0) {
+            const newCount = oldCount - 1;
+            const newIngredients = { ...burgerState.ingredients }
+            newIngredients[type] = newCount;
+            const substracPrice = BASE_PRICE[type];
+            const newPrice = Math.round((burgerState.price - substracPrice) * 100) / 100;
             setBurgerState({
-                ingredients: newIngredients
+                ingredients: newIngredients,
+                price: newPrice
             });
-        }
-    }
-
-    const deleteMeat = () => {
-        const newIngredients = {...burgerState.ingredients};
-        if(newIngredients.meat>0){
-            newIngredients.meat--;
-            setBurgerState({
-                ingredients: newIngredients
-            });
+            updateActiveState(newIngredients);
         }
     }
 
     return (
         <Aux>
             <Burger ingredients={burgerState.ingredients} />
-            <BuildControler addSalad={addSalad} deleteSalad={deleteSalad} 
-                            addBacon={addBacon} deleteBacon={deleteBacon} 
-                            addCheese={addCheese} deleteCheese={deleteCheese} 
-                            addMeat={addMeat} deleteMeat={deleteMeat}/>
+            <BuildControler ingredients={burgerState.ingredients} active={orderButtonState} price={burgerState.price} add={addIngredient} delete={deleteIngredient} />
         </Aux>
     );
 }

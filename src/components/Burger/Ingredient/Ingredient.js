@@ -18,16 +18,16 @@ const Ingredient = props => {
                 </BreadTop>
             );
             break;
-        case ('meat'):
+        case ('Meat'):
             ingredient = <Meat />;
             break;
-        case ('cheese'):
+        case ('Cheese'):
             ingredient = <Cheese />;
             break;
-        case ('salad'):
+        case ('Salad'):
             ingredient = <Salad />;
             break;
-        case ('bacon'):
+        case ('Bacon'):
             ingredient = <Bacon />;
             break;
         default: 
