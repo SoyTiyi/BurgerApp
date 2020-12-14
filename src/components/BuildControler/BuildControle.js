@@ -7,7 +7,7 @@ const BuildControle = props => {
             <Label>{props.text}</Label>
             <RowButtons>
                 <PlusButton onClick={props.add}/>
-                <MinusButton alt={props.activeButton} disabled={!props.activeButton} onClick={props.delete}/>
+                <MinusButton alt={props.activeButton.toString()} disabled={!props.activeButton} onClick={props.delete}/>
             </RowButtons>
         </RowControl>
     );

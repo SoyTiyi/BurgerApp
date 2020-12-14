@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Aux from '../hoc/Aux';
 import Burger from '../components/Burger/Burger';
 import BuildControler from '../components/BuildControler/BuildControler';
+import Modal from '../components/UI/Modal/Modal';
+import OrderSummary from '../components/OrderSummary/OrderSummary';
 
 const BASE_PRICE = {
     Salad: 0.5,
@@ -22,6 +24,8 @@ const BurguerBuilder = props => {
     });
 
     const [orderButtonState, setOrderButtonState] = useState(false);
+
+    const [modalState, setModalState] = useState(false);
 
     const updateActiveState = ingredients => {
         const numIngredients = Object.keys(ingredients)
@@ -64,10 +68,23 @@ const BurguerBuilder = props => {
         }
     }
 
+    const showModal = (type) => {
+        if(type==='close'){
+            setModalState(false);
+        }else{
+            setModalState(true);
+        }
+    }
+
     return (
         <Aux>
+            { modalState ?
+                <Modal>
+                    <OrderSummary price={burgerState.price} showModal={showModal} ingredients={burgerState.ingredients} />
+                </Modal> : null
+            }
             <Burger ingredients={burgerState.ingredients} />
-            <BuildControler ingredients={burgerState.ingredients} active={orderButtonState} price={burgerState.price} add={addIngredient} delete={deleteIngredient} />
+            <BuildControler showModal={showModal} ingredients={burgerState.ingredients} active={orderButtonState} price={burgerState.price} add={addIngredient} delete={deleteIngredient} />
         </Aux>
     );
 }

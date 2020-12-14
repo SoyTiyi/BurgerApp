@@ -23,7 +23,7 @@ const BuildControler = props => {
                     return <BuildControle key={crtl.text} text={crtl.text} add={() => props.add(crtl.type)} delete={() => props.delete(crtl.type)} activeButton={crtl.num > 0} />
                 })}
             </GridButtons>
-            <OrderButton disabled={!props.active}>Order</OrderButton>
+            <OrderButton onClick={() => props.showModal('open')} disabled={!props.active}>Order</OrderButton>
         </Aux>
     );
 }

@@ -7,7 +7,7 @@ export const Container =
 `;
 
 export const Content = styled.div`
-    margin-top: 16px;
+    margin-top: 72px;
 `;
 
 export const BreadBottom = styled.div`
@@ -197,7 +197,7 @@ export const MinusButton = styled.button`
     &:before {
         content: "";
         display: block;
-        background-color: ${props => props.alt ? '#e71d36' : '#a5a58d'};
+        background-color: ${props => props.alt === 'true' ? '#e71d36' : '#a5a58d'};
         position: absolute;
         top: 50%;
         left: 50%;
@@ -302,21 +302,68 @@ export const OrderButton = styled.button`
     }
 `;
 
-export const Modal = styled.div`
+export const ModalStyle = styled.div`
     position: fixed;
     z-index: 500;
-    background-color: white;
+    background-color: #f3722c;
     width: 70%;
-    border: 1px solid #ccc;
+    border: 1px solid #f3722c;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 15%;
     top: 30%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    border-radius: 10px;
+    color: #eaf4f4;
+    text-align: center;
 
     @media (min-width: 600px) {
         width: 500px;
         left: calc(50% - 250px);
     }
+`;
+
+export const CloseButton = styled.button`
+    padding: 10px 15px;
+    border: 1px solid #e01e37;
+    background-color: #e01e37;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 0 10px;
+
+    &:hover {
+        background-color: #ef233c;
+        border-color: #ef233c;
+    }
+`;
+
+export const ContinueButton = styled.button`
+    padding: 10px 15px;
+    border: 1px solid #8ac926;
+    background-color: #8ac926;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 0 10px;
+
+    &:hover {
+        background-color: #9ef01a;
+        border-color: #9ef01a;
+    }
+`;
+
+export const LiStyle = styled.li`
+    display:inline-block;
+    color:white;
+    margin-right:10px;
+`;
+
+export const BackDropStyle = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
 `;

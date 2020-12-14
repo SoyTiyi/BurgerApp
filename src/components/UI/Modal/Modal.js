@@ -1,9 +1,14 @@
 import React from 'react';
-import {Modal} from '../../../style/componentsStyle';
+import { ModalStyle } from '../../../style/componentsStyle';
+import Aux from '../../../hoc/Aux';
+import BackDrop from '../BackDrop/BackDrop';
 const Modal = props => (
-    <Modal>
-        {props.children}
-    </Modal>
+    <Aux>
+        <BackDrop/>
+        <ModalStyle>
+            {props.children}
+        </ModalStyle>
+    </Aux>
 );
 
 export default Modal;
