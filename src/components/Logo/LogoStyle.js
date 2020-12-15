@@ -2,10 +2,7 @@ import styled from 'styled-components';
 
 export const LogoStyle = styled.div`
     background-color: #e9c46a;
-    height: ${props => {
-        console.log(props.height);
-        return props.height;
-    }};
+    height: ${props => props.height};
     box-sizing: border-box;
     border-radius: 5px;
     padding: 8px;
