@@ -6,23 +6,17 @@ export const SideDrawerStyle = styled.div`
     width: 280px;
     max-width: 70%;
     height: 100%;
-    lef: 0;
+    left: 0;
     top: 0;
     z-index: 200;
-    background-color: white;
+    background-color: #f94144;
     padding: 32px 16px;
     box-sizing: border-box;
     transition: transform 0.3s ease-out;
+    transform: ${props => props.open ? 'translateX(0)' : 'translateX(-100%)'};
 
     @media (min-width: 500px){
         display: none; 
+        margin-botton: 10px;
     }
-`;
-
-export const Open = styled.div`
-    transform: translateX(0);
-`;
-
-export const Close = styled.div`
-    transform: translateX(-100%);
 `;

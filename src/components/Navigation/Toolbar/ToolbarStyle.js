@@ -17,6 +17,8 @@ export const ToolbarStyle = styled.header`
 `;
 
 export const NavStyle = styled.nav`
-    height: 100%
-
+    @media (max-width: 500px) {
+        display: none;
+    }
 `;
+

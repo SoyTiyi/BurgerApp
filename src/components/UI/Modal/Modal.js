@@ -4,7 +4,7 @@ import Aux from '../../../hoc/Aux';
 import BackDrop from '../BackDrop/BackDrop';
 const Modal = props => (
     <Aux>
-        <BackDrop/>
+        <BackDrop show/>
         <ModalStyle>
             {props.children}
         </ModalStyle>
